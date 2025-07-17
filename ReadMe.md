@@ -34,14 +34,13 @@ To run **only** the backend & frontend after the initial setup, use:
 node run.js
 ```
 
+
+
 ---
 
 ## 🎥 Showcase
 
-<video width="600" controls>
-  <source src="https://github.com/MIbrahimPro/Furniture-Ecom-Mern-DEKA/blob/main/video/showcase.mp4">
-  Your browser does not support the video tag.
-</video>
+Click here to see the video showcase: [View Demo](https://MIbrahimPro.github.io/Furniture-Ecom-Mern-DEKA/)
 
 ---
 
