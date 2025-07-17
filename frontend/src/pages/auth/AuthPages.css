@@ -1,0 +1,30 @@
+/* src/styles/AuthPages.css */
+
+/* Page wrapper */
+.auth-page {
+    background: url('../../../public/gallery.jpg') center/cover no-repeat;
+    /* optional bg */
+}
+
+/* Glass‑style form */
+.glass-form {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Override input backgrounds */
+.glass-form input {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Make labels more legible */
+.glass-form label {
+    font-weight: 500;
+}
+
+/* Link colors */
+a:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,100 @@
+/* Glass effect (reuse from CartPage) */
+.glass {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 1rem;
+    /* Add some padding for smaller screens */
+}
+
+/* Modal box */
+.modal {
+    width: 90%;
+    max-width: 450px;
+    /* Slightly larger modal for better input spacing */
+    background-color: rgba(255, 255, 255, 0.9);
+    /* More opaque for readability */
+    backdrop-filter: blur(15px);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    /* More pronounced shadow for modals */
+}
+
+/* Override input styles inside glass */
+.glass input {
+    background: rgba(255, 255, 255, 0.9);
+    /* Make inputs slightly more solid */
+    border: 1px solid rgba(200, 200, 200, 0.6);
+    /* Lighter border */
+}
+
+/* Section spacing */
+.profile-page section {
+    position: relative;
+    margin-bottom: 2.5rem;
+    /* More space between sections */
+}
+
+/* Ensure form fields are full width */
+.profile-page input {
+    width: 100%;
+}
+
+/* Modern button styles */
+.modern-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    /* Slightly more rounded */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    color: #333;
+    /* Default text color for buttons */
+    background-color: rgba(255, 255, 255, 0.7);
+    /* Slightly transparent white */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    /* Subtle shadow */
+}
+
+.modern-button:hover {
+    transform: translateY(-1px);
+    /* Slight lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    /* Increased shadow on hover */
+}
+
+/* Specific button styles (icons and colors) */
+.modern-button .material-symbols-outlined {
+    font-size: 1.25rem;
+    /* Slightly larger icons */
+    margin-right: 0.5rem;
+    /* Space between icon and text */
+}
+
+/* Adjustments for buttons without text */
+.modern-button.p-2 .material-symbols-outlined {
+    margin-right: 0;
+    /* Remove margin for icon-only buttons */
+}

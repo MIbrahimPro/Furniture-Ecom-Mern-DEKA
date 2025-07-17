@@ -1,0 +1,37 @@
+/* src/styles/CheckoutPage.css */
+
+/* Payment pills */
+.payment-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 9999px;
+    background-color: #f3f4f6;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.payment-pill.selected {
+    background-color: #ffffff;
+    border-color: currentColor;
+}
+
+/* Ensure pills wrap nicely */
+.checkout-page .payment-pill {
+    min-width: 120px;
+    justify-content: center;
+}
+
+/* Material icons default color is white; we override inline */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    font-size: 24px;
+    cursor: pointer;
+}

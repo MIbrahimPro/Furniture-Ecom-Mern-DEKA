@@ -1,0 +1,14 @@
+/* themes.css */
+
+.theme-section {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.theme-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}

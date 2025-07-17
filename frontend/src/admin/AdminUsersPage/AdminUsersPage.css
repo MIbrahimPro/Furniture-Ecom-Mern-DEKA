@@ -1,0 +1,29 @@
+/* src/styles/AdminUsersPage.css */
+
+/* Table container for horizontal scroll */
+.admin-users-page .overflow-x-auto {
+    overflow-x: auto;
+}
+
+/* Action buttons */
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: transform 0.1s;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Material icons base */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    font-size: 24px;
+}

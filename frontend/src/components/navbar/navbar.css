@@ -1,0 +1,354 @@
+/* --- Cart Icon Badge & Animation --- */
+.cart-icon {
+    position: relative;
+}
+
+.cart-count-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #5263ff;
+    color: #fff;
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    padding: 0 6px;
+    pointer-events: none;
+    transition: all 0.2s ease-out;
+}
+
+/* Bounce animation */
+.cart-bounce {
+    animation: cart-bounce-anim 0.3s ease-out;
+
+}
+
+@keyframes cart-bounce-anim {
+    0% {
+        transform: scale(2) translateY(100px);
+    }
+
+    100% {
+        transform: scale(1) translateY(0px);
+    }
+}
+
+/* --- Base Bubble Styles (Desktop & Mobile Burger Icon) --- */
+.navbar__bubble {
+    position: fixed;
+    z-index: 50;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    /* flex-direction: column; */
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.column {
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.navbar__bubble--links {
+    top: 30px;
+    left: 30px;
+    /* padding-right: 50px; */
+    /* Ensure enough space for longer links */
+}
+
+.navbar__bubble--icons {
+    top: 30px;
+    right: 30px;
+}
+
+/* --- Link Styles --- */
+.navbar__link {
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    color: white;
+    /* Changed to white for better contrast on blurred background */
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s, font-weight 0.2s;
+    /* Smooth transition for font-weight too */
+    white-space: nowrap;
+}
+
+.navbar__link:hover {
+    font-weight: 500;
+}
+
+.navbar__link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    /* White underline */
+    transition: width 0.2s;
+}
+
+.navbar__link:hover::after {
+    width: 100%;
+}
+
+
+
+/* --- Mobile-Specific Styles --- */
+
+/* Hide desktop bubbles and show mobile elements by default */
+.desktop-only {
+    display: flex;
+    /* Or whatever its default display is */
+}
+
+.mobile-only {
+    display: none;
+    /* Hidden by default on desktop */
+}
+
+@media (max-width: 768px) {
+
+    /* Hide desktop bubbles on mobile */
+    .desktop-only {
+        display: none;
+    }
+
+    /* Show mobile elements on mobile */
+    .mobile-only {
+        display: flex;
+        /* Or block, depending on the element */
+    }
+
+    /* Mobile Burger Icon */
+    .mobile-menu-toggle {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+        /* Ensure it's on top of everything */
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(5px);
+        border-radius: 50%;
+        /* Make it a circle */
+        padding: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        /* To center the icon */
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s;
+    }
+
+    .mobile-menu-toggle .material-symbols-outlined {
+        font-size: 30px;
+        color: white;
+        /* Burger icon color */
+    }
+
+    .mobile-menu-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Mobile Menu Overlay/Bubble */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        /* Darker overlay for full-page effect */
+        backdrop-filter: blur(10px);
+        /* More blur for the background */
+        z-index: 99;
+        /* Below the burger icon */
+        display: flex;
+        align-items: center;
+        /* Center content vertically */
+        justify-content: center;
+        /* Center content horizontally */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    .mobile-menu-overlay.open {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-menu-content {
+        background-color: rgba(255, 255, 255, 0.5);
+        /* Semi-transparent bubble for content */
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        /* More rounded for the large bubble */
+        padding: 2rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+        /* Center items within the bubble */
+        max-width: 80%;
+        /* Limit width on small screens */
+        max-height: 80%;
+        /* Limit height */
+        overflow-y: auto;
+        /* Scroll if content overflows */
+        transform: scale(0.9);
+        /* Start slightly smaller for transition */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-menu-overlay.open .mobile-menu-content {
+        transform: scale(1);
+        /* Scale to full size when open */
+    }
+
+    .mobile-menu-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        /* Center items in each section */
+        width: 100%;
+        /* Take full width of parent bubble */
+    }
+
+    .mobile-menu-section:not(:last-child) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        /* Separator between sections */
+        padding-bottom: 1rem;
+    }
+
+    .mobile-menu-icons {
+        flex-direction: row;
+        /* Icons can be horizontal in mobile menu */
+        justify-content: center;
+        /* Center icons if row */
+        gap: 1.5rem;
+        /* Space between icons */
+    }
+
+    /* Mobile link and icon styles (can be slightly different from desktop) */
+    .mobile-navbar__link {
+        font-size: 1.2rem;
+        /* Larger font for mobile */
+        font-weight: 400;
+        color: white;
+        text-decoration: none;
+        position: relative;
+        transition: color 0.2s, font-weight 0.2s;
+        padding: 5px 0;
+        /* Add some vertical padding */
+    }
+
+    .mobile-navbar__link:hover {
+        font-weight: 600;
+    }
+
+    .mobile-navbar__icon .material-symbols-outlined {
+        font-size: 36px;
+        /* Larger icons for mobile */
+        color: white;
+    }
+
+}
+
+/* Admin Dropdown Styles */
+.navbar__admin-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar__admin-dropdown-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    /* padding: 0.5rem 1rem; */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1em;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.navbar__admin-dropdown-btn:hover {
+    color: #f0f0f0;
+}
+
+.navbar__admin-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 180%;
+    right: 0;
+    background-color: rgba(255, 255, 255);
+    backdrop-filter: blur(10px);
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 0.8rem 0.8rem;
+    z-index: 51;
+}
+
+.navbar__admin-dropdown-content.show {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Mobile Admin Styles */
+.mobile-navbar__admin-section {
+    width: 100%;
+}
+
+.mobile-navbar__admin-btn {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.mobile-navbar__admin-links {
+    display: none;
+    /* padding-left: 1rem; */
+}
+
+.mobile-navbar__admin-links.show {
+    display: block;
+}
+
+.link__admin {
+    font-size: 1rem;
+    font-weight: 300;
+    color: black;
+    text-decoration: none;
+    /* padding: 0.5rem 0; */
+    transition: color 0.2s, font-weight 0.2s;
+}

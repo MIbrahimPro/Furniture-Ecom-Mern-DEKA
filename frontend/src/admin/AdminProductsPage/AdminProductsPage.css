@@ -1,0 +1,124 @@
+/* Glass cards & modal backdrop */
+.card,
+.modal {
+    background: rgba(255, 255, 255, 5);
+    backdrop-filter: blur(8px);
+    border-radius: 0.75rem;
+}
+.modal {
+    max-height: 80%;
+    overflow-y: auto;
+}
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(148, 148, 148, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 50;
+}
+
+/* Carousel: show only active image */
+.carousel {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    border-radius: 0.5rem;
+}
+
+.carousel-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.carousel-img.active {
+    opacity: 1;
+}
+
+/* Icon buttons */
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.icon-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Disable button style */
+button[disabled] {
+    cursor: not-allowed;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-dots .dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    background: rgba(0, 4, 255, 0.6);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.carousel-dots .dot.active,
+.carousel-dots .dot:hover {
+    opacity: 1;
+}
+
+/* arrow buttons */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(66, 66, 66, 0.8);
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s;
+    color: white;
+}
+
+.carousel-arrow:hover {
+    background: rgb(190, 190, 190);
+    color: #333;
+}
+
+.carousel-arrow--left {
+    left: 0.75rem;
+}
+
+.carousel-arrow--right {
+    right: 0.75rem;
+}
+
+/* ensure the material icon itself is sized correctly */
+.carousel-arrow .material-symbols-outlined {
+    font-size: 1.5rem;
+}

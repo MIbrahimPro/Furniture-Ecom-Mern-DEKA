@@ -1,0 +1,34 @@
+/* Glass effect */
+.order-card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 0.75rem;
+}
+
+/* Status dropdown styling */
+.status-select {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+    background: white;
+    font-size: 0.875rem;
+}
+
+/* Material Symbols base */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.material-symbols-outlined:hover {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+}

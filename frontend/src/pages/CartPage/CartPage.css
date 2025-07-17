@@ -1,0 +1,43 @@
+/* src/styles/CartPage.css */
+
+/* Glass effect container */
+.glass {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Quantity buttons */
+.qty-btn {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: none;
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.qty-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Proceed button uses theme color if you like: override in inline style or extend */
+.cart-page button[onClick="handleCheckout"] {
+    background-color: #333;
+    /* fallback dark */
+    /* e.g. use theme color via inline style in JSX if available */
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cart-item .text-right {
+        text-align: center;
+    }
+}

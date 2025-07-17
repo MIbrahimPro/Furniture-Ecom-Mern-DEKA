@@ -1,0 +1,7 @@
+design/
+html/
+.vscode/
+home/
+**/node_modules/
+
+.env
