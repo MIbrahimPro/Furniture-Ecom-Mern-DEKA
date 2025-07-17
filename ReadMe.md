@@ -39,7 +39,7 @@ node run.js
 ## 🎥 Showcase
 
 <video width="600" controls>
-  <source src="video/showcase.mp4" type="video/webm">
+  <source src="https://github.com/MIbrahimPro/Furniture-Ecom-Mern-DEKA/blob/main/video/showcase.mp4">
   Your browser does not support the video tag.
 </video>
 
