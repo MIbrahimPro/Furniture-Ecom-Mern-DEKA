@@ -39,7 +39,7 @@ node run.js
 ## 🎥 Showcase
 
 <video width="600" controls>
-  <source src="video/showcase.webm" type="video/webm">
+  <source src="video/showcase.mp4" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
