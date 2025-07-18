@@ -1,67 +1,69 @@
 #!/usr/bin/env node
 
-const { execSync } = require('child_process');
+const { execSync, spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-function run(cmd) {
+function runSync(cmd, cwd = process.cwd()) {
   console.log(`> ${cmd}`);
-  execSync(cmd, { stdio: 'inherit' });
+  execSync(cmd, { stdio: 'inherit', cwd, shell: true });
+}
+
+function spawnProcess(name, cmd, args, cwd) {
+  console.log(`\n> Starting ${name}: ${cmd} ${args.join(' ')} (cwd: ${cwd})`);
+  const proc = spawn(cmd, args, { cwd, stdio: 'inherit', shell: true });
+  proc.on('error', err => console.error(`${name} failed:`, err));
+  proc.on('exit', code => console.log(`${name} exited with code ${code}`));
 }
 
 // 0. Define directories
 const projectRoot = process.cwd();
-const backendDir = path.join(projectRoot, 'backend');
-const frontendDir = path.join(projectRoot, 'frontend');
+const backendDir   = path.join(projectRoot, 'backend');
+const frontendDir  = path.join(projectRoot, 'frontend');
 
 // 1. Check Node.js
 try {
-  execSync('node -v');
-} catch (err) {
+  execSync('node -v', { stdio: 'ignore', shell: true });
+} catch {
   console.error('Node.js is not installed. Please install from https://nodejs.org/');
   process.exit(1);
 }
 
 // 2. Check MongoDB
 try {
-  execSync('mongod --version');
-} catch (err) {
+  execSync('mongod --version', { stdio: 'ignore', shell: true });
+} catch {
   console.error('MongoDB is not installed. Please install from https://www.mongodb.com/try/download/community');
   process.exit(1);
 }
 
-// 3. Install dependencies in backend and frontend
-console.log('Installing backend dependencies...');
-process.chdir(backendDir);
-run('npm install');
-console.log('Installing frontend dependencies...');
-process.chdir(frontendDir);
-run('npm install');
+// 3. Install dependencies
+console.log('\nInstalling backend dependencies...');
+runSync('npm install', backendDir);
 
-// Return to project root
-process.chdir(projectRoot);
+console.log('\nInstalling frontend dependencies...');
+runSync('npm install', frontendDir);
 
 // 4. Create .env
+const envPath = path.join(backendDir, '.env');
 const envContent = `MONGODB_URI=mongodb://localhost:27017/deka
 JWT_SECRET=Somesecretlongandsecuretextusedforjwttoken
 PORT=5000
 `;
-fs.writeFileSync(path.join(backendDir, '.env'), envContent);
-console.log('.env file created');
+fs.writeFileSync(envPath, envContent);
+console.log(`\n.env file created at ${envPath}`);
 
 // 5. Seed database
-process.chdir(backendDir);
-run('node script/seed.js');
+console.log('\nSeeding database...');
+runSync('node script/seed.js', backendDir);
 
-// 6. Start servers
-console.log('Starting backend and frontend...');
-process.chdir(backendDir);
-run('npx nodemon server.js &');
-process.chdir(frontendDir);
-run('npm start');
+// 6. Start both servers in parallel
+console.log('\nLaunching servers...');
+spawnProcess('Backend',  'npx', ['nodemon', 'server.js'], backendDir);
+spawnProcess('Frontend', 'npm', ['start'],                        frontendDir);
 
 // 7. Final summary
-console.log('\n\n');
+console.log('\n\n\n\n\n\n');
 console.log('\x1b[34m========================================\x1b[0m');
 console.log('\x1b[34mDEKA INITIALIZATION COMPLETE!           \x1b[0m');
 console.log('\x1b[34m----------------------------------------\x1b[0m');
