@@ -51,7 +51,7 @@ console.log('.env file created');
 
 // 5. Seed database
 process.chdir(backendDir);
-run('node scripts/seed.js');
+run('node script/seed.js');
 
 // 6. Start servers
 console.log('Starting backend and frontend...');
@@ -59,3 +59,19 @@ process.chdir(backendDir);
 run('npx nodemon server.js &');
 process.chdir(frontendDir);
 run('npm start');
+
+// 7. Final summary
+console.log('\n\n');
+console.log('\x1b[34m========================================\x1b[0m');
+console.log('\x1b[34mDEKA INITIALIZATION COMPLETE!           \x1b[0m');
+console.log('\x1b[34m----------------------------------------\x1b[0m');
+console.log('\x1b[34mUser Credentials:                      \x1b[0m');
+console.log('\x1b[34m  • admin@admin.com    | pswd1        \x1b[0m');
+console.log('\x1b[34m  • john@example.com   | UserPass123  \x1b[0m');
+console.log('\x1b[34m  • jane@example.com   | UserPass123  \x1b[0m');
+console.log('\x1b[34m  • peter@example.com  | UserPass123  \x1b[0m');
+console.log('\x1b[34m  • mary@example.com   | UserPass123  \x1b[0m');
+console.log('\x1b[34m----------------------------------------\x1b[0m');
+console.log('\x1b[34mTo restart later:                       \x1b[0m');
+console.log('\x1b[34m  node scripts/run.js                   \x1b[0m');
+console.log('\x1b[34m========================================\x1b[0m');
