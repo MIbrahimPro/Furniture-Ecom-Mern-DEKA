@@ -4,66 +4,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEKA Project Showcase</title>
+    <title>DEKA Furniture Ecommerce Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --text-color: #343a40;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: #e9ecef;
+            --code-bg: #e9ecef;
+            --table-header-bg: #e2e6ea;
+            --table-border: #dee2e6;
+        }
+
         body {
-            font-family: sans-serif;
-            margin: 20px;
-            background-color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .video-container {
-            padding: 51.56% 0 0 0;
-            position: relative;
-            width: 80%;
-            /* Adjust as needed */
-            max-width: 800px;
-            /* Max width for the video */
-            margin-top: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .container {
+            width: 90%;
+            max-width: 960px;
+            margin: 40px auto;
+            background-color: var(--card-bg);
             border-radius: 8px;
-            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px 40px;
+            box-sizing: border-box;
         }
 
-        .video-container iframe {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--primary-color);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.8em;
+            color: #212529;
+            /* Darker for main title */
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 1.2em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+            /* Darker primary on hover */
+            text-decoration: underline;
+        }
+
+        ul {
+            margin-bottom: 1em;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 0.5em;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            border-radius: 6px;
+            padding: 15px;
+            overflow-x: auto;
+            margin-bottom: 1.5em;
+        }
+
+        pre code {
+            display: block;
+            background: none;
+            padding: 0;
+            white-space: pre-wrap;
+            /* Ensure text wraps */
+            word-break: break-all;
+            /* Break words to fit container */
+            font-size: 0.9em;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 2em 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio (height/width = 9/16 = 0.5625) */
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 2em auto;
+            /* Center the video */
+        }
+
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
+            height: 100%;
             border: 0;
         }
 
-        h1 {
-            color: #333;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+            background-color: var(--card-bg);
+            border: 1px solid var(--table-border);
+            border-radius: 8px;
+            overflow: hidden;
+            /* Ensures rounded corners apply to content */
         }
 
-        p {
-            color: #555;
-            text-align: center;
-            max-width: 700px;
-            line-height: 1.6;
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--table-border);
+        }
+
+        th {
+            background-color: var(--table-header-bg);
+            font-weight: 600;
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f4f6f9;
+            /* Subtle zebra striping */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px 25px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            pre {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            th,
+            td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>🚀 DEKA Project Showcase</h1>
-    <p>This is a demonstration of the DEKA project. Watch the video below to see it in action!</p>
+    <div class="container">
+        <h1>DEKA Furniture Ecommerce Store</h1>
+        <p>This is a full-stack web application for a furniture ecommerce store featuring admin accounts, product
+            management, and order creation & management.</p>
 
-    <div class="video-container">
-        <iframe
-            src="https://player.vimeo.com/video/1102360057?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            style="position:absolute;top:0;left:0;width:100%;height:100%;" title="DEKA">
-        </iframe>
+        <h2>📋 Prerequisites</h2>
+        <ul>
+            <li><strong>Git:</strong> <a href="https://git-scm.com/downloads"
+                    target="_blank">https://git-scm.com/downloads</a></li>
+            <li><strong>Node.js (v14+):</strong> <a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a>
+            </li>
+            <li><strong>MongoDB (Community):</strong> <a href="https://www.mongodb.com/try/download/community"
+                    target="_blank">https://www.mongodb.com/try/download/community</a></li>
+        </ul>
+
+        <h2>🚀 Quick Start</h2>
+        <p>Open an <strong>empty folder</strong> in VS Code and paste the following in your terminal:</p>
+        <pre><code>git clone https://github.com/MIbrahimPro/Furniture-Ecom-Mern-DEKA.git
+cd Furniture-Ecom-Mern-DEKA
+node init.js</code></pre>
+        <p>This will:</p>
+        <ul>
+            <li>Clone the DEKA repo</li>
+            <li>Check/install dependencies</li>
+            <li>Create a <code>.env</code> file</li>
+            <li>Seed the database</li>
+            <li>Start both backend & frontend servers</li>
+        </ul>
+
+        <h3>🔄 Restart Servers</h3>
+        <p>To run <strong>only</strong> the backend & frontend after the initial setup, use:</p>
+        <pre><code>node run.js</code></pre>
+
+        <hr>
+
+        <h2>🎥 Showcase</h2>
+        <p>Watch the video below to see the DEKA Furniture Ecommerce Store in action!</p>
+        <div class="video-wrapper">
+            <iframe
+                src="https://player.vimeo.com/video/1102360057?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" title="DEKA Furniture Ecommerce Store Showcase">
+            </iframe>
+        </div>
+
+        <hr>
+
+        <h2>🔐 User Credentials</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="mailto:admin@admin.com">admin@admin.com</a></td>
+                    <td><code>pswd1</code></td>
+                </tr>
+                <tr>
+                    <td><a href="mailto:john@example.com">john@example.com</a></td>
+                    <td><code>UserPass123</code></td>
+                </tr>
+                <tr>
+                    <td><a href="mailto:jane@example.com">jane@example.com</a></td>
+                    <td><code>UserPass123</code></td>
+                </tr>
+                <tr>
+                    
+                    <td><a href="mailto:peter@example.com">peter@example.com</a></td>
+                    
+                    <td><code>UserPass123</code></td>
+                </tr>
+                <tr>
+                    <td><a href="mailto:mary@example.com">mary@example.com</a></td>
+                    <td><code>UserPass123</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="text-align: center; margin-top: 30px; font-size: 0.9em; color: var(--secondary-color);">
+            Find the full project code on <a href="https://github.com/MIbrahimPro/Furniture-Ecom-Mern-DEKA"
+                target="_blank">GitHub</a>.
+        </p>
     </div>
-    <p>Find the full project code on <a href="https://github.com/YOUR_USERNAME/YOUR_REPOSITORY">GitHub</a>.</p>
 </body>
 
 </html>
